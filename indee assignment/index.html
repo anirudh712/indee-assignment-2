@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swimlane</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <div class="swimlane-container">
+            <div class="swimlane" role="list">
+                <div class="swimlane-header">
+                    <p>Most-watched films</p>
+                </div>
+                 <!-- Main container -->
+                <div class="swimlane-content-container" ref="swimlaneContentContainer">
+                    <div class="swimlane-content" ref="swimlaneContent">
+                        <!-- Load movie posters -->
+                        <div class="card" v-for="(film, index) in films" :key="film.id" tabindex="0" role="listitem" aria-label="Movie Card">
+                            <img :src="'images/' + film.image" :alt="film.title" class="card-image">
+                            <!-- swimlane slide -->
+                            <img v-if="index === 6" src="images/Swimlane Slide Right.png" alt="Next" class="slide-overlay" @click="scrollToNextSet" role="button" tabindex="0" aria-label="Next">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="main.js"></script>
+</body>
+</html>
